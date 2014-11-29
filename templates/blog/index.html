@@ -12,4 +12,17 @@
 		{% endautoescape %}
 	</article>
 {% endfor %}
+<div class="btn-group" role="group">
+	{% if posts.has_previous %}
+	<a class="btn btn-default" href="{% url 'blog_page' posts.previous_page_number %}">{{ posts.previous_page_number }}</a>
+	{% else %}
+	<div class="btn btn-default">No previous pages</div>
+	{% endif %}
+	<div class="btn btn-default">Page {{ posts.number }} of {{ posts.paginator.num_pages }}</div>
+	{% if posts.has_next %}
+	<a class="btn btn-default" href="{% url 'blog_page' posts.next_page_number %}">{{ posts.next_page_number }}</a>
+	{% else %}
+	<div class="btn btn-default">No next pages</div>
+	{% endif %}
+</div>
 {% endblock %}
