@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Tamandua Communicator (tmnd.net){% endblock %}
+{% block main %}
+{% for post in posts %}
+	<article>
+		<header>
+			<time datetime="{{ post.pub_date|date:"c" }}">{{ post.pub_date|date:"N j, Y" }}</time>, <a href="{% url 'blog_category' post.category.slug %}">{{ post.category.name }}</a>
+			<h3><a href="{% url 'read_post' post.slug %}">{{ post.title }}</a></h3>
+		</header>
+		{% autoescape off %}
+		{{ post.parsed_lead }}
+		{% endautoescape %}
+	</article>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,7 @@
+db.sqlite3
+__pycache__
+migrations
+*.swp
+*.swo
+django.mo
+tmnd/settings.py
